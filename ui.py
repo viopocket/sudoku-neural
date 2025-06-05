@@ -126,7 +126,7 @@ def run_ui(puzzle, difficulty, suggested, nn_activations=None):
             )
         else:
             draw_nn_diagram(
-                screen, 975, 300,  # was 950, 300
+                screen, 975, 300,
                 input_vals=input_vals,
                 output_val=output_val
             )

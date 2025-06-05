@@ -141,7 +141,6 @@ def classify_difficulty(puzzle):
         return "Hard"
 
 def extract_features(puzzle):
-    # Example features: number of clues and logical steps
     num_clues = sum(cell != 0 for row in puzzle for cell in row)
     steps, _ = logical_solve(puzzle)
     return [

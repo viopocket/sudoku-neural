@@ -35,7 +35,7 @@ def suggest_difficulty(last_difficulty, last_time, last_errors):
                 y.append(diff_map[d])
     clf = MLPClassifier(hidden_layer_sizes=(5,), max_iter=500)
     clf.fit(X, y)
-    plot_nn_decision_surface(clf)  # <-- Add this line
+    plot_nn_decision_surface(clf)
     last = np.array([[diff_map.get(last_difficulty,1), last_time, last_errors]])
     pred = clf.predict(last)[0]
     rev_map = {v:k for k,v in diff_map.items()}
@@ -71,7 +71,7 @@ def plot_nn_decision_surface(clf):
     plt.show()
 
 def get_nn_activations(input_vec):
-    clf = joblib.load("difficulty_classifier.pkl")  # Use your adjuster model file
+    clf = joblib.load("difficulty_classifier.pkl") # Use your adjuster model file
     activations = []
     X = np.array(input_vec).reshape(1, -1)
     layer_input = X
