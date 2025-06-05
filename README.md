@@ -25,10 +25,12 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
 
 - **Graphical User Interface**  
   Play Sudoku and visualize the neural network in a Pygame-based UI.  
-  *(See: `ui.run_ui`)*
+  The neural network visualization now reflects the **real activations** of the classifier model for the current puzzle.  
+  *(See: `ui.run_ui` and `draw_nn_diagram`)*
 
 - **Data Collection & Training Scripts**  
-  Includes scripts to collect training data (`collect_training_data.py`) and train the difficulty classifier (`train_difficulty_classifier.py`).
+  Includes scripts to collect training data (`collect_training_data.py`) and train the difficulty classifier (`train_difficulty_classifier.py`).  
+  The main script (`main.py`) automates this process if the classifier is missing.
 
 ---
 
@@ -39,8 +41,9 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
 3. Loads the last user performance.
 4. Uses AI to suggest the next puzzle difficulty.
 5. Generates and classifies a new puzzle.
-6. Runs the UI for gameplay.
-7. On exit, prints the solution, score summary, and progress plots.
+6. Extracts puzzle features and computes real neural network activations.
+7. Runs the UI for gameplay, visualizing the real NN activations.
+8. On exit, prints the solution, score summary, and progress plots.
 
 ---
 
@@ -70,5 +73,3 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
    The system will automatically generate training data and train the classifier if needed.
 
 ---
-
-*Enjoy playing and improving your Sudoku skills with AI!*
