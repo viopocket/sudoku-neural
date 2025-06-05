@@ -85,33 +85,3 @@ flowchart TD
     J --> K[Track & Save Performance]
     K --> L[Show Solution, Summary, and Progress]
     L --> M[End]
-
----
-
-## Data & Models
-
-- **Training Data:**  
-  `sudoku_difficulty_data.csv` — Features and labels for training the classifier.
-
-- **Model:**  
-  `difficulty_classifier.pkl` — Trained neural network for puzzle difficulty classification.
-
-- **Database:**  
-  `scores.db` — Stores user scores and actions.
-
----
-
-## Getting Started
-
-1. Install requirements:
-    ```sh
-    pip install -r requirements.txt
-    ```
-2. Run `main.py`:
-    ```sh
-    python main.py
-    ```
-   The system will automatically generate training data and train the classifier if needed.
-
----
-
