@@ -66,6 +66,9 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
    - The solution to the puzzle is displayed.
    - A summary of your performance and progress plots are shown.
 
+**Note:**  
+The neural network visualization in the UI displays the activations of the classifier model (used for puzzle difficulty classification), not the adjuster model (used for suggesting the next puzzle’s difficulty).
+
 ---
 
 ## Data & Models
