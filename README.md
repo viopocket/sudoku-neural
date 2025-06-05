@@ -1,40 +1,74 @@
-# sudoku-neural
- Python project for an interactive Sudoku game with AI-driven difficulty adjustment and user performance tracking
+# SudokuAI
 
- Main Features
-Sudoku Puzzle Generation & Solving:
-Uses backtracking and logical techniques to generate, solve, and analyze Sudoku puzzles (solver.py).
+A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural network-based puzzle classification, and user performance tracking.
 
-Difficulty Classification:
-Classifies puzzles using both logic-based heuristics and a neural network classifier (solver.classify_difficulty_nn).
-The classifier is trained on features extracted from puzzles and stored in difficulty_classifier.pkl.
+---
 
-AI Difficulty Adjustment:
-Suggests the next puzzle’s difficulty based on user performance using a neural network (adjuster.suggest_difficulty).
+## Main Features
 
-User Performance Tracking:
-Stores game results and actions in an SQLite database (tracking.py), and provides plotting functions for progress and action patterns.
+- **Sudoku Puzzle Generation & Solving**  
+  Generates, solves, and analyzes Sudoku puzzles using backtracking and logical techniques.  
+  *(See: `solver.py`)*
 
-Graphical User Interface:
-Implements a Pygame-based UI for playing Sudoku and visualizing the neural network (ui.run_ui).
+- **Difficulty Classification**  
+  Classifies puzzles using both logic-based heuristics and a neural network classifier.  
+  The neural network is trained on extracted puzzle features and stored in `difficulty_classifier.pkl`.  
+  *(See: `solver.classify_difficulty_nn`)*
 
-Data Collection & Training Scripts:
-Includes scripts to collect training data (collect_training_data.py) and train the difficulty classifier (train_difficulty_classifier.py).
+- **AI Difficulty Adjustment**  
+  Suggests the next puzzle’s difficulty based on your recent performance using a neural network.  
+  *(See: `adjuster.suggest_difficulty`)*
 
-Workflow (main.py)
-Ensures the difficulty classifier exists (trains if missing).
-Initializes databases.
-Loads the last user performance.
-Uses AI to suggest the next difficulty.
-Generates and classifies a new puzzle.
-Runs the UI for the user to play.
-On exit, prints the solution, score summary, and progress plots.
-Data & Models
-Training Data:
-sudoku_difficulty_data.csv contains features and labels for training the classifier.
+- **User Performance Tracking**  
+  Stores game results and actions in an SQLite database, and provides plotting functions for progress and action patterns.  
+  *(See: `tracking.py`)*
 
-Model:
-difficulty_classifier.pkl is a trained neural network for puzzle difficulty classification.
+- **Graphical User Interface**  
+  Play Sudoku and visualize the neural network in a Pygame-based UI.  
+  *(See: `ui.run_ui`)*
 
-Database:
-scores.db stores user scores and actions.
+- **Data Collection & Training Scripts**  
+  Includes scripts to collect training data (`collect_training_data.py`) and train the difficulty classifier (`train_difficulty_classifier.py`).
+
+---
+
+## Workflow (`main.py`)
+
+1. Ensures the difficulty classifier exists (trains if missing).
+2. Initializes databases.
+3. Loads the last user performance.
+4. Uses AI to suggest the next puzzle difficulty.
+5. Generates and classifies a new puzzle.
+6. Runs the UI for gameplay.
+7. On exit, prints the solution, score summary, and progress plots.
+
+---
+
+## Data & Models
+
+- **Training Data:**  
+  `sudoku_difficulty_data.csv` — Features and labels for training the classifier.
+
+- **Model:**  
+  `difficulty_classifier.pkl` — Trained neural network for puzzle difficulty classification.
+
+- **Database:**  
+  `scores.db` — Stores user scores and actions.
+
+---
+
+## Getting Started
+
+1. Install requirements:
+    ```sh
+    pip install pygame matplotlib scikit-learn pandas joblib
+    ```
+2. Run `main.py`:
+    ```sh
+    python main.py
+    ```
+   The system will automatically generate training data and train the classifier if needed.
+
+---
+
+*Enjoy playing and improving your Sudoku skills with AI!*
