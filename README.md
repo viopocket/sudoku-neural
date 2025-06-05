@@ -73,15 +73,15 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
 ```mermaid
 flowchart TD
     A[Start / main.py] --> B{Classifier Exists?}
-    B -- No --> C[Generate Training Data<br>and Train Model]
+    B -- No --> C[Generate Training Data and Train Model]
     C --> D[Initialize Databases]
     B -- Yes --> D
     D --> E[Load Last Performance]
-    E --> F[AI Suggests Next Difficulty<br>(adjuster.py, NN)]
+    E --> F[AI Suggests Next Difficulty (adjuster.py, NN)]
     F --> G[Generate Sudoku Puzzle]
-    G --> H[Classify Puzzle Difficulty<br>(solver.py, NN)]
+    G --> H[Classify Puzzle Difficulty (solver.py, NN)]
     H --> I[Extract Features & Activations]
-    I --> J[Run Game UI<br>with Live NN Visualization]
+    I --> J[Run Game UI with Live NN Visualization]
     J --> K[Track & Save Performance]
     K --> L[Show Solution, Summary, and Progress]
     L --> M[End]
