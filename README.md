@@ -61,7 +61,7 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
 
 1. Install requirements:
     ```sh
-    pip install pygame matplotlib scikit-learn pandas joblib
+    pip install -r requirements.txt
     ```
 2. Run `main.py`:
     ```sh
