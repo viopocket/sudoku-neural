@@ -34,16 +34,57 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
 
 ---
 
-## Workflow (`main.py`)
+## How It Works: Step-by-Step Flow
 
-1. Ensures the difficulty classifier exists (trains if missing).
-2. Initializes databases.
-3. Loads the last user performance.
-4. Uses AI to suggest the next puzzle difficulty.
-5. Generates and classifies a new puzzle.
-6. Extracts puzzle features and computes real neural network activations.
-7. Runs the UI for gameplay, visualizing the real NN activations.
-8. On exit, prints the solution, score summary, and progress plots.
+1. **Startup & Classifier Check**
+   - When you run `main.py`, the program checks if the neural network model for puzzle classification (`difficulty_classifier.pkl`) exists.
+   - If it’s missing, the system automatically generates training data and trains the model—no manual steps required.
+
+2. **Database Initialization**
+   - The program initializes SQLite databases to track your scores and actions.
+
+3. **Load Last Performance**
+   - Your most recent game performance (difficulty, time, errors) is loaded from the database to personalize your experience.
+
+4. **AI Suggests Next Difficulty**
+   - A neural network in `adjuster.py` analyzes your recent performance and suggests the next puzzle’s difficulty, adapting the challenge to your skill level.
+
+5. **Puzzle Generation & Classification**
+   - A new Sudoku puzzle is generated.
+   - The neural network classifier in `solver.py` analyzes the puzzle’s features and predicts its difficulty (Easy, Medium, Hard, Expert).
+
+6. **Neural Network Activations for Visualization**
+   - Features from the generated puzzle are extracted and fed into the classifier neural network.
+   - The activations (values at each layer of the network) are captured for visualization.
+
+7. **Gameplay in the UI**
+   - The Pygame-based UI launches, displaying the Sudoku puzzle and a live visualization of the neural network’s activations for the current puzzle.
+   - You play the puzzle; your moves, errors, and time are tracked.
+
+8. **Performance Tracking & Analysis**
+   - After you finish, your performance is saved to the database.
+   - The solution to the puzzle is displayed.
+   - A summary of your performance and progress plots are shown.
+
+---
+
+## Visual Summary
+
+```mermaid
+flowchart TD
+    A[Start / main.py] --> B{Classifier Exists?}
+    B -- No --> C[Generate Training Data<br>and Train Model]
+    C --> D[Initialize Databases]
+    B -- Yes --> D
+    D --> E[Load Last Performance]
+    E --> F[AI Suggests Next Difficulty<br>(adjuster.py, NN)]
+    F --> G[Generate Sudoku Puzzle]
+    G --> H[Classify Puzzle Difficulty<br>(solver.py, NN)]
+    H --> I[Extract Features & Activations]
+    I --> J[Run Game UI<br>with Live NN Visualization]
+    J --> K[Track & Save Performance]
+    K --> L[Show Solution, Summary, and Progress]
+    L --> M[End]
 
 ---
 
@@ -73,3 +114,4 @@ A smart, adaptive Sudoku game with AI-driven difficulty adjustment, neural netwo
    The system will automatically generate training data and train the classifier if needed.
 
 ---
+
