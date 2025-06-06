@@ -69,6 +69,7 @@ def run_ui(puzzle, difficulty, suggested, nn_activations=None):
     screen = pygame.display.set_mode((1400, 600))
     pygame.display.set_caption("Sudoku")
     font = pygame.font.SysFont(None, 40)
+    bold_font = pygame.font.SysFont(None, 40, bold=True)  # Add bold font
     clock = pygame.time.Clock()
     running = True
     selected = None
@@ -98,8 +99,12 @@ def run_ui(puzzle, difficulty, suggested, nn_activations=None):
         for i in range(9):
             for j in range(9):
                 if grid[i][j]:
-                    color = (255,0,0) if (i, j) in wrong_cells else (0,0,0)
-                    img = font.render(str(grid[i][j]), True, color)
+                    if puzzle[i][j] != 0:
+                        num_font = bold_font  # Original numbers in bold
+                    else:
+                        num_font = font      # User-filled numbers regular
+                    color = (0,0,0)
+                    img = num_font.render(str(grid[i][j]), True, color)
                     screen.blit(img, (j*60+20, i*60+15))
         # Draw selection
         if selected:
@@ -177,6 +182,12 @@ def run_ui(puzzle, difficulty, suggested, nn_activations=None):
                         if all(grid[x][y] == solution[x][y] for x in range(9) for y in range(9)):
                             save_performance(difficulty, elapsed, errors)
                             running = False
+                elif event.key == pygame.K_DELETE:
+                    i, j = selected
+                    if puzzle[i][j] == 0:
+                        grid[i][j] = 0
+                        if (i, j) in wrong_cells:
+                            wrong_cells.remove((i, j))
                 elif event.key == pygame.K_ESCAPE:
                     selected = None
         clock.tick(30)
